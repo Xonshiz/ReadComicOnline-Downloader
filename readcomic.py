@@ -48,7 +48,7 @@ url = str(Edited_Url)
 
 '''
 
-	There's this annoying Browser Check when you visit to the site. So, I had to wait for an element to load, which denotes that whole page has been rendered.
+	There's this annoying Browser Check when you visit the site. So, I had to wait for an element to load, which denotes that whole page has been rendered.
 	It would've taken a long time if I had approached this normally, because downloading all the images would definitely take hell of a time.
 	Hence, I used '--load-images=no' command line argument with the PhantomJS to disable to image downloading, which significantly decreases page load time.
 
@@ -93,7 +93,7 @@ finally:
 print 'Looking For Links In The Pages!\n'
 with open('source.txt') as searchfile:
         for line in searchfile:
-            left,sep,right = line.partition('lstImages.push("') #Looking For "Content_id" in the <meta content="http://ib3.huluim.com/video/60585710?region=US&amp;size=600x400" property="og:image"/> (60585710 is Con_id)
+            left,sep,right = line.partition('lstImages.push("') 
             if sep:
             	OG_Title = right.replace('");','')
             	#print OG_Title
