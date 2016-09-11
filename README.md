@@ -2,7 +2,7 @@
 A little script to download comics from http://readcomiconline.to/
 
 #How To Use
-If you're a windows user, grab the [WINDOWS BINARY FROM HERE](https://github.com/Xonshiz/ReadComicOnline-Downloader/blob/master/ReadComicOnline%20Downloader.rar?raw=true). After downloading, please extract the contents using 7zip/winrar etc.
+If you're a windows user, grab the [WINDOWS BINARY FROM HERE](https://github.com/Xonshiz/ReadComicOnline-Downloader/blob/master/ReadComicOnline%20Downloader.rar?raw=true) (x64) and grab the x86 or 32 Bit version from [HERE](https://github.com/Xonshiz/ReadComicOnline-Downloader/raw/master/ReadComicOnline%20Downloader%20-%2032%20Bit.rar). After downloading, please extract the contents using 7zip/winrar etc.
 
 Don't extract in places where you will need admin privilege. 
 
