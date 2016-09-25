@@ -1,7 +1,7 @@
 # ReadComicOnline-Downloader
 A little script to download comics from http://readcomiconline.to/
 
-Don't forget to read the ["Settings.ini" file](https://github.com/Xonshiz/ReadComicOnline-Downloader#settings.ini-file).
+Don't forget to read the ["Settings.ini" file](https://github.com/Xonshiz/ReadComicOnline-Downloader#settings.ini-file-).
 
 #How To Use
 If you're a windows user, download the windows Binaries from these links :
