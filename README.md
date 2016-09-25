@@ -1,8 +1,19 @@
 # ReadComicOnline-Downloader
 A little script to download comics from http://readcomiconline.to/
 
+Don't forget to read the ["Settings.ini" file](https://github.com/Xonshiz/ReadComicOnline-Downloader#settings.ini-file).
+
 #How To Use
-If you're a windows user, grab the [WINDOWS BINARY FROM HERE](https://github.com/Xonshiz/ReadComicOnline-Downloader/blob/master/ReadComicOnline%20Downloader.rar?raw=true) (x64) and grab the x86 or 32 Bit version from [HERE](https://github.com/Xonshiz/ReadComicOnline-Downloader/raw/master/ReadComicOnline%20Downloader%20-%2032%20Bit.rar). After downloading, please extract the contents using 7zip/winrar etc.
+If you're a windows user, download the windows Binaries from these links :
+
+
+1.) x64 : [CLICK ME](http://www.multiupfile.com/f/22e04cb9)
+
+2.) x86 (32 Bit systems) : [CLICK ME](#)
+
+
+After downloading, please extract the contents using 7zip/winrar etc.
+
 
 Don't extract in places where you will need admin privilege. 
 
@@ -14,6 +25,14 @@ Single Issue : `http://readcomiconline.to/Comic/The-New-Guardians/Issue-12?id=84
 
 It will ask for permission to connect to internet, let it connect and it'll do what it is supposed to do.
 
+# First Things First! (For people using the python file, isntead of win. binary)
+
+Download the "requirements.txt" in some directory. Open Command Prompt and browse to the directory where you downloaded your requiremenets.txt file and run this command :
+
+`pip install -r requirements.txt`
+
+NOTE : You need to have "PIP" installed in your system and set in the path. Python 2.7.10 should already have this done. Just double check on your end though.
+
 #Features :
 1.) Downloads all the Issues available for a series. 
 
@@ -23,11 +42,30 @@ It will ask for permission to connect to internet, let it connect and it'll do w
 
 4.) Skips the file if it already exists in the path. 
 
+5.) Option to choose Qulity of Images
+
+6.) Option to download Latest or Older releases.
+
+
+#Settings.ini File :
+Please Read these instructions carefully for updating the settings for the script.
+
+
+`Quality` represents which quality image you want to download. Low Qulatiy or High Quality. Change this parameter to "LQ","HQ","Low Quality" or "High Quality".
+By default, "HQ" is set.
+
+
+`Order` represents which ISSUE you want to download first. Latest uploaded Issue for a series or the oldest uploaded Issue. Option for this parameter are "Old","Latest","New" or "Initial".
+Initial means the oldest chapter.
+
+
+There are various options you can choose to write. Write either of them. By default, the settings are to download "High Quality" images, while downloading the "Oldest" Issue first.
+
+Check the "Settings.ini" file in this repo. and update it to your requirements (if needed).
+
 
 #FUTURE FEATURES :
-1.) Download the series in chronological order. (Currently Downloads the latest Issue Uploaded on site).
-
-2.) Option to download Low Quality Images.
+2.) Option to download particular Issues from a series. 
 
 3.) Option to download particular Issues from a series.
 
@@ -41,3 +79,7 @@ It will ask for permission to connect to internet, let it connect and it'll do w
 4.) File skipping, if the file already exists.
 
 5.) Error Log File creation.
+
+6.) Option to download Latest or Older releases.
+
+7.) Option to choose Qulity of Images.
