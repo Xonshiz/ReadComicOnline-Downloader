@@ -9,7 +9,7 @@
 __author__      = "Xonshiz"
 __email__ = "Xonshiz@psychoticelites.com"
 __website__ = "http://www.psychoticelites.com"
-__version__ = "v2.0"
+__version__ = "v2.1"
 __description__ = "Downloads Issues from http://readcomiconline.to/"
 __copyright__ = "None!"
 
@@ -24,14 +24,15 @@ __copyright__ = "None!"
 # 2.) Puts the files in corresponding directories after downloading the files. 								#
 # 3.) Downloads Hight Quality images. 																		#
 # 4.) Skips the file if it already exists in the path. 														#
+# 5.) Option to choose Qulity of Images. 																	#
+# 6.) Option to download Latest or Older releases.	 														#
 #																											#
 #############################################################################################################
 # 										FUTURE FEATURES :													#
 #############################################################################################################
 #																											#
-# 1.) Download the series in chronological order. (Currently Downloads the latest Issue Uploaded on site).  #
-# 2.) Option to download Low Quality Images. 																#
-# 3.) Option to download particular Issues from a series. 													#
+# 1.) Option to download particular Issues from a series. 													#
+# 2.) Error Log File creation. 																				#
 #																											#
 #############################################################################################################
 # 										CHANGELOG :															#
@@ -41,7 +42,8 @@ __copyright__ = "None!"
 # 2.) Downloading of all the Issues available for a series. 												#
 # 3.) Corresponding Directories for the series and an Issue. 												#
 # 4.) File skipping, if the file already exists. 															#
-# 5.) Error Log File creation. 																				#
+# 5.) Option to choose Qulity of Images. 																	#
+# 6.) Option to download Latest or Older releases.	 														#
 #																											#
 #############################################################################################################	
 
@@ -50,7 +52,7 @@ __copyright__ = "None!"
 
 
 
-import requests, sys,urllib,urllib2,os,re,shutil
+import requests, sys,urllib,urllib2,os,re,shutil,ConfigParser
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -77,16 +79,19 @@ sys.setdefaultencoding('utf-8')
 '''
 
 def Url_Fetching():
+	
+	print '\n'
+	print '{:^80}'.format('################################################')
+	print '{:^80}'.format('Author : Xonshiz')
+	print '{:^80}'.format('################################################\n')
+	
+
 	try:
 		Series_URL = raw_input('Enter The URL of Series Issue :  ')
 	except Exception, e:
 		#raise e
 		print e
 		sys.exit()
-	
-	print '{:^80}'.format('################################################')
-	print '{:^80}'.format('Author : Xonshiz')
-	print '{:^80}'.format('################################################')
 	
 	#Series_Regex = re.compile('https?://(?:(?P<prefix>www\.)?readcomiconline.to/Comic/)[A-Za-z\-\d]+$')
 	Issue_Regex = re.compile('https?://(?P<host>[^/]+)/Comic/(?P<comic>[\d\w-]+)(?:/Issue-)?(?P<issue>\d+)?')
@@ -100,26 +105,31 @@ def Url_Fetching():
 				#print('Issue url: {}'.format(match))
 				Edited_Url = str(Series_URL)+'&readType=1'
 				url = str(Edited_Url)
-				Single_Issue(url)
+				Quality = Settings_Reader()
+				Single_Issue(url,Quality)
 
 			else:
 				#print('Series url: {}'.format(match))
 				#Edited_Url = str(Series_URL)
 				url = str(Series_URL)
 				driver = create_driver()
-				Whole_Series(driver,url)
+				Quality = Settings_Reader()
+				Whole_Series(driver,url,Quality)
 
 		if not found:
 			print 'Please Check Your URL one again!'
 			sys.exit()
 
+
 def create_driver():
 	driver = webdriver.PhantomJS(service_args=['--load-images=no'])
 	return driver
 
-def Single_Issue(url):
+def Single_Issue(url,Quality):
 	#print url
-	
+	print 'Quality To Download : ',Quality[0]
+	print 'Order To Download : ',Quality[1]
+	#sys.exit()
 	
 	browser = webdriver.PhantomJS(service_args=['--load-images=no'])
 	browser.get(url)
@@ -186,28 +196,56 @@ def Single_Issue(url):
 				if sep:
 					OG_Title = right.replace('");','')
 					#print OG_Title
+					#print str(OG_Title).replace('=s0','=s1600')
 					if not os.path.exists(File_Directory):
 						os.makedirs(File_Directory)
-					u = urllib2.urlopen(OG_Title)
-					meta = u.info()['Content-Disposition']
-					File_Name_Final = meta.replace('inline;filename="','').replace('"','').replace('RCO','')
-					File_Check_Path = str(Directory_path)+'/'+str(File_Name_Final)
-					if os.path.isfile(File_Check_Path):
-						print 'File Exist! Skipping ',File_Name_Final,'\n'
-						pass
-					if not os.path.isfile(File_Check_Path):	
-						print 'Downloading : ',File_Name_Final
-						urllib.urlretrieve(OG_Title, File_Name_Final)
-						File_Path = os.path.normpath(File_Name_Final)
-						#print Directory_path,'\n',File_Path
-						try:
-							shutil.move(File_Path,Directory_path)
+					if Quality[0] in ['LQ']:
+						OG_Title = str(OG_Title).replace('=s0','=s1600')
+						#print OG_Title
+						u = urllib2.urlopen(OG_Title)
+						meta = u.info()['Content-Disposition']
+						File_Name_Final = meta.replace('inline;filename="','').replace('"','').replace('RCO','')
+						File_Check_Path = str(Directory_path)+'/'+str(File_Name_Final)
+						if os.path.isfile(File_Check_Path):
+							print 'File Exist! Skipping ',File_Name_Final,'\n'
+							pass
+						if not os.path.isfile(File_Check_Path):	
+							print 'Downloading : ',File_Name_Final
+							urllib.urlretrieve(OG_Title, File_Name_Final)
+							File_Path = os.path.normpath(File_Name_Final)
+							#print Directory_path,'\n',File_Path
+							try:
+								shutil.move(File_Path,Directory_path)
 
-						except Exception, e:
-							#raise e
-							print e,'\n'
-							os.remove(File_Path)
-							pass	
+							except Exception, e:
+								#raise e
+								print e,'\n'
+								os.remove(File_Path)
+								pass	
+					elif Quality[0] in ['HQ']:
+						OG_Title = str(OG_Title).replace('=s1600','=s0')
+						#print OG_Title
+						u = urllib2.urlopen(OG_Title)
+						meta = u.info()['Content-Disposition']
+						File_Name_Final = meta.replace('inline;filename="','').replace('"','').replace('RCO','')
+						File_Check_Path = str(Directory_path)+'/'+str(File_Name_Final)
+						if os.path.isfile(File_Check_Path):
+							print 'File Exist! Skipping ',File_Name_Final,'\n'
+							pass
+						if not os.path.isfile(File_Check_Path):	
+							print 'Downloading : ',File_Name_Final
+							urllib.urlretrieve(OG_Title, File_Name_Final)
+							File_Path = os.path.normpath(File_Name_Final)
+							#print Directory_path,'\n',File_Path
+							try:
+								shutil.move(File_Path,Directory_path)
+
+							except Exception, e:
+								#raise e
+								print e,'\n'
+								os.remove(File_Path)
+								pass			
+					
 
 	print '#####################################\n'					
 	
@@ -215,15 +253,17 @@ def Single_Issue(url):
 	os.remove('ghostdriver.log')
 	#os.remove('source2.txt')
 
-def Whole_Series(driver,url):
+def Whole_Series(driver,url,Quality):
 	#print '\nDownloading Whole Series'
 	#print url
+	
 	driver.get(url)
 	try:
+		print 'Bypassing the check. Wait for a few seconds please.'
 		element = WebDriverWait(driver, 10).until(
 			EC.presence_of_element_located((By.ID, "stSegmentFrame"))
 		)
-		print 'Downloading the whole page! Will take some time, please don\'t close this script...\n'
+		#print 'Downloading the whole page! Will take some time, please don\'t close this script...\n'
 		#print 'I\'ve waited long enough'
 	except Exception, e:
 		#raise e
@@ -240,7 +280,7 @@ def Whole_Series(driver,url):
 	
 	driver.quit()
 	try:
-		os.remove('.Temp_File')
+		os.remove('.Temp_File') #Removing this because I need to check if there's a file with this name or not. Because if the file exists, then it'll APPEND to the older script and it'll download old + new comics
 	except Exception, e:
 		#raise e
 		pass
@@ -256,22 +296,58 @@ def Whole_Series(driver,url):
 					#print Issue_Links
 					Temp_File_variable.write(str(Issue_Links)+'\n')
 					Temp_File_variable.flush()
-		Temp_File_variable.close()			
-	with open('.Temp_File','r') as Link_File:
-		for line in Link_File:
+		Temp_File_variable.close()
+	
+	if Quality[1] in ['LATEST']:
+		with open('.Temp_File','r') as Link_File:
+			for line in Link_File:
+				url = str(line)
+				#print url
+				Single_Issue(url,Quality)
+	
+	
+	elif Quality[1] in ['OLD']:
+		for line in reversed(open('.Temp_File').readlines()):
+			print line
 			url = str(line)
 			#print url
-			Single_Issue(url)
+			Single_Issue(url,Quality)
 
 	os.remove('source2.txt')		
 		
 
 	
 	#Remove the .temp_fle so that it doesn't append to the old data!	
-					
+
+def Settings_Reader():
+
+	#config = ConfigParser()
+	config = ConfigParser.ConfigParser(allow_no_value=True)
+	config.read('Settings.ini')
+	#print config.sections()
+	Quality = config.get('ScriptSettings', 'Quality')
+	Order = config.get('ScriptSettings', 'Order')
+	#print Quality,Order
+
+	if Quality.upper() in ['LQ','LOW','LOW QUALITY']:
+		#print 'Lower Quality'
+		Quality = 'LQ'
+	elif Quality.upper() in ['HQ','HIGH','HIGH QUALITY']:
+		#print 'Higher Quality'
+		Quality = 'HQ'
+
+	if Order.upper() in ['LATEST','NEW']:
+		#print 'Lastest Issues'
+		Order = 'LATEST'
+	elif Order.upper() in ['OLD','INITIAL']:
+		#print 'Older Issues'
+		Order = 'OLD'
+
+	return (Quality,Order)
 
 try:
 	Url_Fetching()
+	#Settings_Reader()
 except Exception, e:
 	#raise e
 	print e
