@@ -53,6 +53,7 @@ __copyright__ = "None!"
 
 
 import requests, sys,urllib,urllib2,os,re,shutil,ConfigParser
+from urllib2 import URLError
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -202,7 +203,13 @@ def Single_Issue(url,Quality):
 					if Quality[0] in ['LQ']:
 						OG_Title = str(OG_Title).replace('=s0','=s1600')
 						#print OG_Title
-						u = urllib2.urlopen(OG_Title)
+						try:
+							u = urllib2.urlopen(OG_Title)
+						except URLError, e:
+							if not hasattr(e, "code"):
+								raise
+							print "Gave ", e.code, e.msg
+							resp = e
 						meta = u.info()['Content-Disposition']
 						File_Name_Final = meta.replace('inline;filename="','').replace('"','').replace('RCO','')
 						File_Check_Path = str(Directory_path)+'/'+str(File_Name_Final)
@@ -225,7 +232,13 @@ def Single_Issue(url,Quality):
 					elif Quality[0] in ['HQ']:
 						OG_Title = str(OG_Title).replace('=s1600','=s0')
 						#print OG_Title
-						u = urllib2.urlopen(OG_Title)
+						try:
+							u = urllib2.urlopen(OG_Title)
+						except URLError, e:
+							if not hasattr(e, "code"):
+								raise
+							print "Gave ", e.code, e.msg
+							resp = e
 						meta = u.info()['Content-Disposition']
 						File_Name_Final = meta.replace('inline;filename="','').replace('"','').replace('RCO','')
 						File_Check_Path = str(Directory_path)+'/'+str(File_Name_Final)
