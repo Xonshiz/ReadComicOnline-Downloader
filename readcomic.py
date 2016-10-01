@@ -208,7 +208,7 @@ def Single_Issue(url,Quality):
 						except URLError, e:
 							if not hasattr(e, "code"):
 								raise
-							print "Gave ", e.code, e.msg
+							print "Got error from "+OG_Title, e.code, e.msg
 							resp = e
 						meta = u.info()['Content-Disposition']
 						File_Name_Final = meta.replace('inline;filename="','').replace('"','').replace('RCO','')
@@ -237,7 +237,7 @@ def Single_Issue(url,Quality):
 						except URLError, e:
 							if not hasattr(e, "code"):
 								raise
-							print "Gave ", e.code, e.msg
+							print "Got error from "+OG_Title, e.code, e.msg
 							resp = e
 						meta = u.info()['Content-Disposition']
 						File_Name_Final = meta.replace('inline;filename="','').replace('"','').replace('RCO','')
