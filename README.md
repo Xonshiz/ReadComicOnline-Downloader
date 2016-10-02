@@ -83,3 +83,10 @@ Check the "Settings.ini" file in this repo. and update it to your requirements (
 6.) Option to download Latest or Older releases.
 
 7.) Option to choose Qulity of Images.
+
+8.) File name Fix and some Minor Bug Fix
+
+#Thanks (Contributors):
+Thank you guys for pull requests and fixing silly issues.
+
+1.) @Efreak
