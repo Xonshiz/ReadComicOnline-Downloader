@@ -44,6 +44,8 @@ __copyright__ = "None!"
 # 4.) File skipping, if the file already exists. 															#
 # 5.) Option to choose Qulity of Images. 																	#
 # 6.) Option to download Latest or Older releases.	 														#
+# 6.) Script won't break on HTTP errors.(Thanks to @Efreak)	 												#
+# 6.) Weird File name Fix and some Minor Bug Fix	 														#
 #																											#
 #############################################################################################################	
 
@@ -131,6 +133,7 @@ def Single_Issue(url,Quality):
 	print 'Quality To Download : ',Quality[0]
 	print 'Order To Download : ',Quality[1]
 	#sys.exit()
+	#print url,' This is first'
 	
 	browser = webdriver.PhantomJS(service_args=['--load-images=no'])
 	browser.get(url)
@@ -142,6 +145,7 @@ def Single_Issue(url,Quality):
 		#print 'I\'ve waited long enough'
 	except Exception, e:
 		#raise e
+		browser.save_screenshot('Single_exception.png')
 		print e
 		pass
 	finally:
@@ -161,35 +165,29 @@ def Single_Issue(url,Quality):
 
 	'''
 	
-	#print 'Looking For Links In The Pages!\n'
-	with open('source.txt') as searchfile:
-			for line in searchfile:
-				left,sep,right = line.partition('meta name="keywords" content="read') 
-				if sep:
-					#print sep
-					OG_Title = right.split('#')
-					#print OG_Title,'\n'
-					Raw_Issue_Number = str(OG_Title[-1]).replace('"','').replace('>','').strip()
-					Issue_Number = 'Issue '+str(Raw_Issue_Number)
-					#print Issue_Number
-	searchfile.close()
 	
-	with open('source.txt') as searchfile:
-			for line in searchfile:
-				left,sep,right = line.partition('meta name="description" content=') 
-				if sep:
-					#print sep
-					OG_Title = right.split('Issue')
-					Series_Name = str(OG_Title[0]).replace('Read','').replace('"','').strip().encode('utf-8')
-					print '\nSeries Name : ', Series_Name,' -',Issue_Number,'\n'
-					print '#####################################\n'
-					Raw_File_Directory = str(Series_Name)+'/'+str(Issue_Number)
-					File_Directory = re.sub('[^A-Za-z0-9\-\.\'\#\/ ]+', '', Raw_File_Directory) # Fix for "Special Characters" in The series name
-					#print File_Directory
-					Directory_path = os.path.normpath(File_Directory)
-					#print Directory_path
-					
-	searchfile.close()
+	Series_Name_Splitter = url.split('/')
+	Series_Name = str(Series_Name_Splitter[4]).replace('-',' ')
+	#print Series_Name
+
+	Issue_Number_Splitter = str(Series_Name_Splitter[5])
+	#print Issue_Number_Splitter
+	reg = re.findall(r'[(\d)]+',Issue_Number_Splitter)
+	#print reg
+	Issue_Number = str(reg[0])
+	#print Issue_Number
+
+
+	print '\nSeries Name : ', Series_Name,' -',Issue_Number,'\n'
+	#print Series_Name,'\n'
+	#print Issue_Number,'\n'
+	print '#####################################\n'
+	Raw_File_Directory = str(Series_Name)+'/'+str(Issue_Number)
+	File_Directory = re.sub('[^A-Za-z0-9\-\.\'\#\/ ]+', '', Raw_File_Directory) # Fix for "Special Characters" in The series name
+	#print File_Directory
+	Directory_path = os.path.normpath(File_Directory)
+	#print Directory_path
+
 
 	with open('source.txt') as searchfile:
 			for line in searchfile:
@@ -280,6 +278,7 @@ def Whole_Series(driver,url,Quality):
 		#print 'I\'ve waited long enough'
 	except Exception, e:
 		#raise e
+		driver.save_screenshot('Whole_exception.png')
 		print e
 		pass
 	finally:
@@ -297,34 +296,57 @@ def Whole_Series(driver,url,Quality):
 	except Exception, e:
 		#raise e
 		pass
+	
+	
 	with open('source2.txt') as searchfile:
 		with open('.Temp_File','a') as Temp_File_variable:
 			for line in searchfile:
 				left,sep,right = line.partition('title="Read ') # Extra Space to make it more precise and drop the readcomiconline.to link
 				if sep:
 					OG_Title = left.split('"')
+					#print OG_Title
 					#print OG_Title[1]
 					Raw_Issue_Links = OG_Title[1].strip()
 					Issue_Links = 'http://readcomiconline.to'+str(Raw_Issue_Links)
-					#print Issue_Links
+					#print Issue_Links,' #'
 					Temp_File_variable.write(str(Issue_Links)+'\n')
 					Temp_File_variable.flush()
 		Temp_File_variable.close()
-	
+
+
+	with open(".Temp_File","r") as input:
+		with open(".Temp_File2","wb") as output: 
+			for line in input:
+				if line != "http://readcomiconline.to../../Content/images/bullet.png":
+					output.write(line)
+					#print line
+
+		
 	if Quality[1] in ['LATEST']:
 		with open('.Temp_File','r') as Link_File:
 			for line in Link_File:
-				url = str(line)
-				#print url
-				Single_Issue(url,Quality)
-	
+				bs_link = 'http://readcomiconline.to../../Content/images/bullet.png'
+				if bs_link in line:
+					#print 'line'
+					pass
+				else :
+					url = str(line)
+					#print url
+					Single_Issue(url,Quality)
+
 	
 	elif Quality[1] in ['OLD']:
 		for line in reversed(open('.Temp_File').readlines()):
-			print line
-			url = str(line)
-			#print url
-			Single_Issue(url,Quality)
+			#print line
+			bs_link = 'http://readcomiconline.to../../Content/images/bullet.png'
+			if bs_link in line:
+				#print 'line'
+				pass
+			else :
+				url = str(line)
+				#print url
+				Single_Issue(url,Quality)
+
 
 	os.remove('source2.txt')		
 		
