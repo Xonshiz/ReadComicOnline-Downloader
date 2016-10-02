@@ -89,4 +89,4 @@ Check the "Settings.ini" file in this repo. and update it to your requirements (
 #Thanks (Contributors):
 Thank you guys for pull requests and fixing silly issues.
 
-1.) @Efreak
+1.) [Efreak](https://github.com/Efreak)
