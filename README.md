@@ -7,7 +7,7 @@ Don't forget to read the ["Settings.ini"](https://github.com/Xonshiz/ReadComicOn
 If you're a windows user, download the windows Binaries from these links :
 
 
-1.) x64 : [CLICK ME](http://www.multiupfile.com/f/22e04cb9) OR [CLICK ME](https://drive.google.com/file/d/0B27CFrTCSppNdTg2LXY3cjEtYzQ/view?usp=sharing)
+1.) x64 : [CLICK ME](https://drive.google.com/file/d/0B27CFrTCSppNS1gtMk5RSGY4M0U/view)
 
 2.) x86 (32 Bit systems) : [CLICK ME](#)
 
