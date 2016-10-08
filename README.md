@@ -7,7 +7,7 @@ Don't forget to read the ["Settings.ini"](https://github.com/Xonshiz/ReadComicOn
 If you're a windows user, download the windows Binaries from these links :
 
 
-1.) x64 : [CLICK ME](https://drive.google.com/file/d/0B27CFrTCSppNS1gtMk5RSGY4M0U/view)
+1.) x64 : [CLICK ME](https://drive.google.com/file/d/0B27CFrTCSppNbTRnWVFmUEE5Y0k/view)
 
 2.) x86 (32 Bit systems) : [CLICK ME](#)
 
@@ -65,9 +65,8 @@ Check the "Settings.ini" file in this repo. and update it to your requirements (
 
 
 #FUTURE FEATURES :
-2.) Option to download particular Issues from a series. 
+1.) Option to download particular Issues from a series. 
 
-3.) Option to download particular Issues from a series.
 
 #CHANGELOG :
 1.) Re-Wrote the whole script for better understanding and flow.
@@ -85,6 +84,14 @@ Check the "Settings.ini" file in this repo. and update it to your requirements (
 7.) Option to choose Qulity of Images.
 
 8.) File name Fix and some Minor Bug Fix
+
+9.) Annual Issues are downloaded properly now.
+
+#Known Issues/Bugs:
+
+Because readcomiconline.to is behing CloudFlare, there's a limit to visit the site. If you're downloading a series with a lot of Issues or chapters, the script will halt mid-way, because cloudflare needs a 'Human Check'. Example URL to replicate this issue : http://readcomiconline.to/Comic/The-Amazing-Spider-Man-1963
+
+Thanks to [Gizmo179](https://github.com/gizmo179) for notifying me about the issue. Currently there's nothing I can do about it. I'll develope a feature that'll server as a work around for this issue.
 
 #Thanks (Contributors):
 Thank you guys for pull requests and fixing silly issues.
