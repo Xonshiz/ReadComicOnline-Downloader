@@ -46,6 +46,7 @@ __copyright__ = "None!"
 # 6.) Option to download Latest or Older releases.	 														#
 # 6.) Script won't break on HTTP errors.(Thanks to @Efreak)	 												#
 # 6.) Weird File name Fix and some Minor Bug Fix	 														#
+# 7.) Annual Issues are now downloadable,			 														#
 #																											#
 #############################################################################################################	
 
@@ -98,6 +99,8 @@ def Url_Fetching():
 	
 	#Series_Regex = re.compile('https?://(?:(?P<prefix>www\.)?readcomiconline.to/Comic/)[A-Za-z\-\d]+$')
 	Issue_Regex = re.compile('https?://(?P<host>[^/]+)/Comic/(?P<comic>[\d\w-]+)(?:/Issue-)?(?P<issue>\d+)?')
+	Annual_Regex = re.compile('https?://(?P<host>[^/]+)/Comic/(?P<comic>[\d\w-]+)(?:/Annual-)?(?P<issue>\d+)?')
+	#Issue_Regex = re.compile('https?://(?P<host>[^/]+)/Comic/(?P<comic>[\d\w-]+)(?:/Issue-)?|(?:/Annual-)?(?P<issue>\d+)?')
 
 	lines = Series_URL.split('\n')
 	for line in lines:
@@ -118,6 +121,19 @@ def Url_Fetching():
 				driver = create_driver()
 				Quality = Settings_Reader()
 				Whole_Series(driver,url,Quality)
+
+		found = re.search(Annual_Regex, line)
+		if found:
+			match = found.groupdict()
+			
+			if match['issue']:
+				#print('Issue url: {}'.format(match))
+				Edited_Url = str(Series_URL)+'&readType=1'
+				url = str(Edited_Url)
+				Quality = Settings_Reader()
+				Single_Issue(url,Quality)
+			else:
+				print 'Uh, please check the link'	
 
 		if not found:
 			print 'Please Check Your URL one again!'
@@ -172,6 +188,9 @@ def Single_Issue(url,Quality):
 
 	Issue_Number_Splitter = str(Series_Name_Splitter[5])
 	#print Issue_Number_Splitter
+	Issue_Or_Annual_Split = str(Issue_Number_Splitter).split("?")
+	Issue_Or_Annual = str(Issue_Or_Annual_Split[0]).replace("-"," ").strip()
+	#print Issue_Or_Annual
 	reg = re.findall(r'[(\d)]+',Issue_Number_Splitter)
 	#print reg
 	Issue_Number = str(reg[0])
@@ -182,7 +201,7 @@ def Single_Issue(url,Quality):
 	#print Series_Name,'\n'
 	#print Issue_Number,'\n'
 	print '#####################################\n'
-	Raw_File_Directory = str(Series_Name)+'/'+str(Issue_Number)
+	Raw_File_Directory = str(Series_Name)+'/'+str(Issue_Or_Annual)
 	File_Directory = re.sub('[^A-Za-z0-9\-\.\'\#\/ ]+', '', Raw_File_Directory) # Fix for "Special Characters" in The series name
 	#print File_Directory
 	Directory_path = os.path.normpath(File_Directory)
