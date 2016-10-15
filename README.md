@@ -9,7 +9,7 @@ If you're a windows user, download the windows Binaries from these links :
 
 1.) x64 : [CLICK ME](https://drive.google.com/file/d/0B27CFrTCSppNbTRnWVFmUEE5Y0k/view)
 
-2.) x86 (32 Bit systems) : [CLICK ME](#)
+2.) x86 (32 Bit systems) : [CLICK ME](https://drive.google.com/file/d/0B27CFrTCSppNODVXVXRZUFZMNmM/view)
 
 
 After downloading, please extract the contents using 7zip/winrar etc.
