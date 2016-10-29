@@ -10,15 +10,15 @@ ReadComic Online Downloader is a command line tool to download comics from http:
 > Don't overuse this script. Support the developers of readcomiconline.to by disabling your adblock on their site. Advertisments pay for the website servers.
 
 ## Table Of Content
-* [Dependencies Installation](https://github.com/Xonshiz/ReadComicOnline-Downloader#dependencies-installation-)
-* [Installation](https://github.com/Xonshiz/ReadComicOnline-Downloader#installation-)
-* [Settings.ini File](https://github.com/Xonshiz/ReadComicOnline-Downloader#settingsini-file-)
-* [Windows Binary](https://github.com/Xonshiz/ReadComicOnline-Downloader#windows-binary-)
-* [Features](https://github.com/Xonshiz/ReadComicOnline-Downloader#features-)
-* [FUTURE FEATURES](https://github.com/Xonshiz/ReadComicOnline-Downloader#future-features-)
+* [Dependencies Installation](https://github.com/Xonshiz/ReadComicOnline-Downloader#dependencies-installation)
+* [Installation](https://github.com/Xonshiz/ReadComicOnline-Downloader#installation)
+* [Settings.ini File](https://github.com/Xonshiz/ReadComicOnline-Downloader#settingsini-file)
+* [Windows Binary](https://github.com/Xonshiz/ReadComicOnline-Downloader#windows-binary)
+* [Features](https://github.com/Xonshiz/ReadComicOnline-Downloader#features)
+* [FUTURE FEATURES](https://github.com/Xonshiz/ReadComicOnline-Downloader#future-features)
 * [Known Issues/Bugs](https://github.com/Xonshiz/ReadComicOnline-Downloader#known-issuesbugs-)
-* [CHANGELOG](https://github.com/Xonshiz/ReadComicOnline-Downloader#changelog-)
-* [Contributors](https://github.com/Xonshiz/ReadComicOnline-Downloader#contributors-)
+* [CHANGELOG](https://github.com/Xonshiz/ReadComicOnline-Downloader#changelog)
+* [Contributors](https://github.com/Xonshiz/ReadComicOnline-Downloader#contributors)
 
 ## Dependencies Installation
 This script can be run on multiple Operating Systems. However, if you're using any OS other than windows, then you might need to install certain things before hand to get this script working.
