@@ -77,7 +77,7 @@ Mac OS X users will have to fetch their version of `PhantomJS` ,`Python` and `Pi
 I'd manually show it here how to do it, but I don't have a Mac OS X system. So, you'll need to follow those links.
 
 ## Installation
-After installign and setting up all the dependencies in your Operating System, you're good to go and use this script.
+After installing and setting up all the dependencies in your Operating System, you're good to go and use this script.
 The instructions for all the OS would remain same. Download [`this python file`](https://github.com/Xonshiz/ReadComicOnline-Downloader/blob/master/readcomic.py) and put it in a folder somewhere in your sytem.
 
 For windows and Mac OS X, you'll need to copy phantomJS in the directory of this script. Meaning, copy the phantomJS binary that you downloaded in to the folder where you're kept this `readcomic.py` file.
