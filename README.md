@@ -1,6 +1,6 @@
 # Readcomic Online Downloader
 
-[![N|Solid](https://raw.githubusercontent.com/Xonshiz/ReadComicOnline-Downloader/master/favicon.ico)](https://nodesource.com/products/nsolid)
+[![N|Solid](https://raw.githubusercontent.com/Xonshiz/ReadComicOnline-Downloader/master/favicon.ico)](https://github.com/Xonshiz/ReadComicOnline-Downloader)
 
 ReadComic Online Downloader is a command line tool to download comics from http://readcomiconline.to/
 
