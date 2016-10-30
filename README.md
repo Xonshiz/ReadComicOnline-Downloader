@@ -14,10 +14,11 @@ ReadComic Online Downloader is a command line tool to download comics from http:
 * [Installation](https://github.com/Xonshiz/ReadComicOnline-Downloader#installation)
 * [Settings.ini File](https://github.com/Xonshiz/ReadComicOnline-Downloader#settingsini-file)
 * [Windows Binary](https://github.com/Xonshiz/ReadComicOnline-Downloader#windows-binary)
+* [Usage](https://github.com/Xonshiz/ReadComicOnline-Downloader#usage)
 * [Features](https://github.com/Xonshiz/ReadComicOnline-Downloader#features)
-* [FUTURE FEATURES](https://github.com/Xonshiz/ReadComicOnline-Downloader#future-features)
+* [Future Features](https://github.com/Xonshiz/ReadComicOnline-Downloader#future-features)
 * [Known Issues/Bugs](https://github.com/Xonshiz/ReadComicOnline-Downloader#known-issuesbugs-)
-* [CHANGELOG](https://github.com/Xonshiz/ReadComicOnline-Downloader#changelog)
+* [Changelog](https://github.com/Xonshiz/ReadComicOnline-Downloader#changelog)
 * [Contributors](https://github.com/Xonshiz/ReadComicOnline-Downloader#contributors)
 
 ## Dependencies Installation
@@ -78,7 +79,7 @@ I'd manually show it here how to do it, but I don't have a Mac OS X system. So, 
 
 ## Installation
 After installing and setting up all the dependencies in your Operating System, you're good to go and use this script.
-The instructions for all the OS would remain same. Download [`this python file`](https://github.com/Xonshiz/ReadComicOnline-Downloader/blob/master/readcomic.py) and put it in a folder somewhere in your sytem.
+The instructions for all the OS would remain same. Download [`this python file`](https://github.com/Xonshiz/ReadComicOnline-Downloader/blob/master/readcomic.py) and put it in a folder somewhere in your system.
 
 For windows and Mac OS X, you'll need to copy phantomJS in the directory of this script. Meaning, copy the phantomJS binary that you downloaded in to the folder where you're kept this `readcomic.py` file.
 
@@ -90,7 +91,7 @@ As for Linux/Debain users, we've already put the binary in the appropriate place
 ## Settings.ini File
 Please Read these instructions carefully for updating the settings for the script.
 
-`Quality` represents which quality image you want to download. Low Qulatiy or High Quality. Change this parameter to "LQ","HQ","Low Quality" or "High Quality".
+`Quality` represents which quality image you want to download. Low Quality or High Quality. Change this parameter to "LQ","HQ","Low Quality" or "High Quality".
 By default, "HQ" is set.
 
 `Order` represents which ISSUE you want to download first. Latest uploaded Issue for a series or the oldest uploaded Issue. Option for this parameter are "Old","Latest","New" or "Initial".
@@ -102,8 +103,54 @@ Check the "`Settings.ini`" file in this repo. and update it to your requirements
 
 ## Windows Binary
 It is recommended that windows users use this binary to save both, your head and time from installing all the dependencies. You can download the binary and start using the script right off the bat. Grab the respective binaries from the links below :
-* `x86 Systems` : [CLICK ME](https://drive.google.com/file/d/0B27CFrTCSppNODVXVXRZUFZMNmM/view)
-* `x64 Systems` : [CLICK ME](https://drive.google.com/file/d/0B27CFrTCSppNbTRnWVFmUEE5Y0k/view)
+* `x86 Systems` : [COMING SOON](#)
+* `x64 Systems` : [CLICK ME](https://drive.google.com/file/d/0B27CFrTCSppNeU56Tk5lR0ZJOTg/view)
+
+## Usage
+Using the script is pretty simple. Execute the `.py` or the `.exe` file and paste the link to the ISSUE/SERIES you want to download.
+
+If you want to download chapters/issue within a range, you'll have to specify a range. Let's say you want to download only chapters from chapter 20 to chapter 30 from a certain series, you can do so by entering the range when asked. If you want to download all the chapter from a show, then just enter `none`,`all` or `null` when asked about it.
+
+For now, let's just download all the chapter from [this](http://readcomiconline.to/Comic/Injustice-Gods-Among-Us-I) series. Here's what you'll do :
+* Open command prompt/Terminal and browse to the directory that have this script.
+
+**Note :** Windows users can hold down shift and right click anywhere in the area and select "open command prompt here".
+
+* Type `"ReadComicOnline Downloader.exe"` (with quotes) if you downloaded windows binary. Type `readcomic.py`, if you're using .py file instead.
+* Press ENTER/RETURN.
+* Enter the URL to the whole series, if you want to download all the chapter (or chapters within a range) or, if you want to download a particular chapter, enter the URL to that.
+* Press ENTER/RETURN.
+* If you're downloading a particular chapter, just sit back and wait till it downloads everything.
+* However, if you're downloadig whole series or ranged chapters, you got more work to do.
+* Now, the script should ask for the range. If want to download chapters within a range, follow the steps from [How To Enter Range](https://github.com/Xonshiz/ReadComicOnline-Downloader#how-to-enter-range) section now. But, if you're downloading everything, enter `null`,`none` or `all` in this range question.
+* Your job is done. It should download everything.
+
+**Look at the GIF image below to see it all in action.**
+
+**`Downloading Single Issue`**
+
+[![N|Solid](https://github.com/Xonshiz/ReadComicOnline-Downloader/blob/master/Tutorial%20Images/Single_Issue.gif?raw=true)](https://github.com/Xonshiz/ReadComicOnline-Downloader/blob/master/Tutorial%20Images/Single_Issue.gif)
+
+**`Downloading All The Chapters`**
+
+[![N|Solid](https://github.com/Xonshiz/ReadComicOnline-Downloader/blob/master/Tutorial%20Images/Whole_Series.gif?raw=true)](https://github.com/Xonshiz/ReadComicOnline-Downloader/blob/master/Tutorial%20Images/Whole_Series.gif)
+
+#### How to Enter Range
+Range is to be entered in the following syntax : `4-6`
+
+This tells the script that you want to download chapter 4 to chapter 6 **(both included)**.
+
+Follow the first `7` steps mention in the [USAGE](https://github.com/Xonshiz/ReadComicOnline-Downloader#usage) section and then carry on from here:
+* So, when it asks for you to enter range, you're going to enter from where to where you want to download chapters. Let's say you want to download from chapter 5 to chapter 10. You'll enter `5-10`.
+* Now, it'll ask you whether those are `Issue or Annual`. Readcomic have two things, `Annual` chapters and `Issue Chapters`. So, check on that site whether it is an Annual or normal Issue. It's safe to enter Issue in most cases.
+* Press ENTER/RETURN and it'll download it.
+
+**Look at the GIF image below to see it all in action.**
+
+**`Downloading Chapters Within A Certain Range`**
+
+[![N|Solid](https://github.com/Xonshiz/ReadComicOnline-Downloader/blob/master/Tutorial%20Images/Range_Chapters.gif?raw=true)](https://github.com/Xonshiz/ReadComicOnline-Downloader/blob/master/Tutorial%20Images/Range_Chapters.gif)
+
 
 ## Features
 Since this is a very simple and basic script, at the current moment, it has limited features :
@@ -112,21 +159,22 @@ Since this is a very simple and basic script, at the current moment, it has limi
 
 * Puts the files in corresponding directories after downloading the files.
 
-* Downloads Hight Quality images.
+* Downloads High Quality images.
 
 * Skips the file if it already exists in the path. 
 
-* Option to choose Qulity of Images
+* Option to choose Quality of Images
 
 * Option to download Latest or Older releases.
 
-## Future Features
-* Option to download particular Issues from a series.
+* Option to download certain chapters within a range.
 
 ## Known Issues/Bugs
-Because readcomiconline.to is behing CloudFlare, there's a limit to visit the site. If you're downloading a series with a lot of Issues or chapters, the script will halt mid-way, because cloudflare needs a 'Human Check'. Example URL to replicate this issue : http://readcomiconline.to/Comic/The-Amazing-Spider-Man-1963
+Because readcomiconline.to is behind CloudFlare, there's a limit to visit the site. If you're downloading a series with a lot of Issues or chapters, the script will halt mid-way, because cloudflare needs a 'Human Check'. Example URL to replicate this issue : http://readcomiconline.to/Comic/The-Amazing-Spider-Man-1963
 
-Thanks to [Gizmo179](https://github.com/gizmo179) for notifying me about the issue. Currently there's nothing I can do about it. I'll develope a feature that'll server as a work around for this issue.
+Thanks to [Gizmo179](https://github.com/gizmo179) for notifying me about the issue. Currently there's nothing I can do about it.
+
+Workaround for this Issue is by opening the website via your browser and verifying manually and then downloading chapters within a range. If that doesn't work, try downloading the chapters within a range after some time.
 
 ## CHANGELOG
 * Re-Wrote the whole script for better understanding and flow.
@@ -141,11 +189,13 @@ Thanks to [Gizmo179](https://github.com/gizmo179) for notifying me about the iss
 
 * Option to download Latest or Older releases.
 
-* Option to choose Qulity of Images.
+* Option to choose Quality of Images.
 
 * File name Fix and some Minor Bug Fix
 
 * Annual Issues are downloaded properly now.
+
+* Option to download certain chapters within a range.
  
 ## Contributors:
 Thank you guys for pull requests and fixing silly issues.
