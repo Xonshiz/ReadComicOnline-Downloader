@@ -196,6 +196,8 @@ Workaround for this Issue is by opening the website via your browser and verifyi
 * Annual Issues are downloaded properly now.
 
 * Option to download certain chapters within a range.
+
+* Fix for #4
  
 ## Contributors:
 Thank you guys for pull requests and fixing silly issues.
