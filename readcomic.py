@@ -283,7 +283,7 @@ def Single_Issue(url,Quality):
 	print '#####################################\n'					
 	
 	os.remove('source.txt')
-	os.remove('ghostdriver.log')
+	#os.remove('ghostdriver.log')
 	#os.remove('source2.txt')
 
 def Whole_Series(driver,url,Quality):
