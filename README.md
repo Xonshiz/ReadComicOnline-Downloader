@@ -22,7 +22,7 @@ ReadComic Online Downloader is a command line tool to download comics from http:
 * [Contributors](https://github.com/Xonshiz/ReadComicOnline-Downloader#contributors)
 
 ## Dependencies Installation
-This script can be run on multiple Operating Systems. However, if you're using any OS other than windows, then you might need to install certain things before hand to get this script working.
+This script can run on multiple Operating Systems. However, if you're using any OS other than windows, then you might need to install certain things before hand to get this script working.
 
 ### Linux/Debian :
 
@@ -31,7 +31,7 @@ First, make sure your system is updated :
 sudo apt-get update
 sudo apt-get install build-essential chrpath libssl-dev libxft-dev
 ```
-Grab Dependencies for PhantomJS (most importatn) :
+Grab Dependencies for PhantomJS (most important) :
 ```
 sudo apt-get install libfreetype6 libfreetype6-dev
 sudo apt-get install libfontconfig1 libfontconfig1-dev
@@ -55,7 +55,7 @@ phantomjs --version
 ```
 
 ### Windows :
-If you're on windows, then it is recommended to download the `windows binary` for this script. If you use the windows binary, you don't need to install anything. But, if for some weird reason you want to use Python script instead, then follow these steps :
+If you're on windows, then it is recommended to download the [`windows binary`](https://github.com/Xonshiz/ReadComicOnline-Downloader#windows-binary) for this script. If you use the windows binary, you don't need to install anything. But, if for some weird reason you want to use Python script instead, then follow these steps :
 
 * Install Python > 2.7.6. Download the desired installer from [here](https://www.python.org/downloads/).
 * [Add it in the system path](http://superuser.com/questions/143119/how-to-add-python-to-the-windows-path) (if not already added).
@@ -74,6 +74,8 @@ Mac OS X users will have to fetch their version of `PhantomJS` ,`Python` and `Pi
 * Python installation guide : http://docs.python-guide.org/en/latest/starting/install/osx/
 * Pip installation guide : http://stackoverflow.com/questions/17271319/installing-pip-on-mac-os-x
 * PhantomJS Mac Binary : http://phantomjs.org/download.html (Download the latest build for your OS)
+
+After downloading and installing these, you need to add PIP,Python and PhantomJS in your path. You can look it up on internet to follow the guides to achieve this.
 
 I'd manually show it here how to do it, but I don't have a Mac OS X system. So, you'll need to follow those links.
 
@@ -121,8 +123,8 @@ For now, let's just download all the chapter from [this](http://readcomiconline.
 * Enter the URL to the whole series, if you want to download all the chapter (or chapters within a range) or, if you want to download a particular chapter, enter the URL to that.
 * Press ENTER/RETURN.
 * If you're downloading a particular chapter, just sit back and wait till it downloads everything.
-* However, if you're downloadig whole series or ranged chapters, you got more work to do.
-* Now, the script should ask for the range. If want to download chapters within a range, follow the steps from [How To Enter Range](https://github.com/Xonshiz/ReadComicOnline-Downloader#how-to-enter-range) section now. But, if you're downloading everything, enter `null`,`none` or `all` in this range question.
+* However, if you're downloadig whole series or ranged chapters, you got more work to do. If you're downloading all or ranged chapters, follow along. Single Chapter downloaders should be reading the comic now ;)
+* Now, the script should ask for the range. If you want to download chapters within a range, follow the steps from [How To Enter Range](https://github.com/Xonshiz/ReadComicOnline-Downloader#how-to-enter-range) section now. But, if you're downloading everything, enter `null`,`none` or `all` in this range question.
 * Your job is done. It should download everything.
 
 **Look at the GIF image below to see it all in action.**
@@ -142,7 +144,7 @@ This tells the script that you want to download chapter 4 to chapter 6 **(both i
 
 Follow the first `7` steps mention in the [USAGE](https://github.com/Xonshiz/ReadComicOnline-Downloader#usage) section and then carry on from here:
 * So, when it asks for you to enter range, you're going to enter from where to where you want to download chapters. Let's say you want to download from chapter 5 to chapter 10. You'll enter `5-10`.
-* Now, it'll ask you whether those are `Issue or Annual`. Readcomic have two things, `Annual` chapters and `Issue Chapters`. So, check on that site whether it is an Annual or normal Issue. It's safe to enter Issue in most cases.
+* Now, it'll ask you whether those are `Issue or Annual`. Readcomic have two things, `Annual` chapters and `Issue Chapters`. So, check on that site whether it is an Annual or a normal Issue. It's safe to enter `Issue` in most cases.
 * Press ENTER/RETURN and it'll download it.
 
 **Look at the GIF image below to see it all in action.**
